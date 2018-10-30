@@ -24,3 +24,21 @@ export type CloudStatus = CloudStatusBase | CloudStatusLoggedIn;
 export interface SubscriptionInfo {
   human_description: string;
 }
+
+export interface CloudWebhook {
+  cloud_id: string;
+  cloud_url: string;
+}
+
+export interface Webhook {
+  name: string;
+  webhook_id: string;
+  cloud_id?: string;
+  cloud_url?: string;
+}
+
+export interface WebhookDialogParams {
+  entry: Webhook;
+  hookUpdated: (hook: Webhook) => void;
+  disableHook: () => void;
+}
