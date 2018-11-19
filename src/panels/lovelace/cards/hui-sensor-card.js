@@ -147,7 +147,8 @@ class HuiSensorCard extends EventsMixin(LitElement) {
     const margin = this._config.line_width;
     const height = this._config.height - margin * 4;
     width -= margin * 2;
-    const yRatio = (this._max - this._min) / height;
+    let yRatio = (this._max - this._min) / height;
+    yRatio = yRatio !== 0 ? yRatio : height;
     let xRatio = width / (hours - (detail === 1 ? 1 : 0));
     xRatio = isFinite(xRatio) ? xRatio : width;
     const getCoords = (item, i, offset = 0, depth = 1) => {
